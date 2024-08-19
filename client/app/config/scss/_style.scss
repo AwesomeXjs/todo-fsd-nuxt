@@ -1,0 +1,21 @@
+@import 'reset';
+@import 'variables';
+
+html {
+	font-size: $regular-text;
+}
+
+body {
+	font-family: $userfont;
+	line-height: $lineheight;
+	color: var(--text-color);
+	min-width: 100vh;
+	position: relative;
+	background-color: var(--background-color);
+	transition: .5s linear;
+}
+
+.container {
+	max-width: 750px;
+	margin: 0 auto;
+}

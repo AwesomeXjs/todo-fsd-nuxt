@@ -1,0 +1,88 @@
+:root {
+	--text-color: black;
+
+	--accent-color: #5850DD;
+	--accent-color-light: #8781f8;
+	--accent-color-dark: #4a45b8;
+
+	--background-color: white;
+	--boder-note: 2px solid transparent;
+
+	--placeholder-color: #c3c1e5;
+}
+[dark] {
+	--text-color: white;
+	--background-color: #252525;
+	--boder-note: 2px solid #F7F7F7;
+}
+
+$background-opacity: rgba(0, 0, 0, 0.7);
+$text: white;
+$special-text: rgb(145, 144, 144);
+$border: #398dc0;
+
+$regular-text: 16px;
+$small-text: 14px;
+$lineheight: 1.75;
+$userfont: 'Montserrat', sans-serif;
+$transition: 0.25s ease-out;
+$index: calc(1vw + 1vh);
+$border-radius: 5px;
+$radius-style: 0 7px;
+
+$breakpoint_hd_plus: 1920px;
+$breakpoint_hd: 1440px;
+$breakpoint_wide: 1200px;
+$breakpoint_desktop: 992px;
+$breakpoint_tablet: 768px;
+$breakpoint_mobile: 568px;
+$breakpoint_mobile-s: 414px;
+
+@mixin hd_plus() {
+	@media screen and (max-width: $breakpoint_hd_plus) {
+		//1440px --
+		@content;
+	}
+}
+
+@mixin hd() {
+	@media screen and (max-width: $breakpoint_hd) {
+		//1440px --
+		@content;
+	}
+}
+
+@mixin wide() {
+	@media screen and (max-width: $breakpoint_wide) {
+		//1200px --
+		@content;
+	}
+}
+
+@mixin desktop() {
+	@media screen and (max-width: $breakpoint_desktop) {
+		//992px --
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@media screen and (max-width: $breakpoint_tablet) {
+		//768px --
+		@content;
+	}
+}
+
+@mixin mobile() {
+	@media screen and (max-width: $breakpoint_mobile) {
+		//568px --
+		@content;
+	}
+}
+
+@mixin mobile-s() {
+	@media screen and (max-width: $breakpoint_mobile-s) {
+		//414px --
+		@content;
+	}
+}
