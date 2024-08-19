@@ -4,12 +4,4 @@ export const appRoutes = [
     path: "/",
     component: () => import("@/pages/home"),
   },
-  {
-    name: "about",
-    path: "/about",
-    component: () => import("@/pages/about"),
-    meta: {
-      middleware: ["auth"],
-    },
-  },
 ];

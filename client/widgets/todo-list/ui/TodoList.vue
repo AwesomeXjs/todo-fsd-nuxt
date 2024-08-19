@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { TodoItem } from "@/entities/todo";
-import { useTodoStore } from "@/entities/todo";
+import { useFilter } from "@/features/filter";
+import { useSortUtils } from "@/features/sort";
 
-const store = useTodoStore();
+const { searchTodos } = useFilter();
+const { sortedAndFilteredTodos } = useSortUtils(searchTodos);
+
+console.log();
 </script>
 
 <template>
   <div class="todo-list">
-    <TodoItem v-for="item in store.todos" :key="item.id" :todo="item" />
+    <TodoItem
+      v-for="item in sortedAndFilteredTodos"
+      :key="item.id"
+      :todo="item"
+    />
   </div>
 </template>
 

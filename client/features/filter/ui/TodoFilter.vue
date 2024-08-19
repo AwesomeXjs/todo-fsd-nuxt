@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Search } from "@/shared/assets";
-import { useFilter } from "../model/useFilter";
+import { useTodoStore } from "@/entities/todo";
 
-const { inputValue } = useFilter();
+const store = useTodoStore();
 </script>
 
 <template>
   <div class="input-wrapper">
     <input
-      v-model="inputValue"
+      v-model="store.inputValue"
       placeholder="Search note..."
       class="filter"
       type="text"

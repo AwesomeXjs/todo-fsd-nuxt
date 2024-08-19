@@ -2,7 +2,9 @@
 import { EditIcon, Trash } from "@/shared/assets";
 import type { ITodo } from "../model/types";
 import { useTodoStore } from "../model/store";
+import { useAppStore } from "@/shared/store/useAppStore";
 
+const appStore = useAppStore();
 const store = useTodoStore();
 
 defineProps<{
@@ -11,6 +13,15 @@ defineProps<{
 
 const changeCompeteHandler = (id: number) => {
   store.checkTodo(id);
+};
+
+const deleteHandler = (id: number) => {
+  store.deleteTodo(id);
+};
+
+const editTodoHandler = (id: number) => {
+  store.selectedTodo = id;
+  appStore.editTodoModalShow = true;
 };
 </script>
 
@@ -26,12 +37,13 @@ const changeCompeteHandler = (id: number) => {
       <p :class="{ completeTodo: todo.completed }">{{ todo.title }}</p>
     </div>
     <div class="features">
-      <EditIcon class="edit-icon" stroke="var(--accent-color)" />
-      <Trash
-        @click="store.deleteTodo(todo.id)"
-        class="trash-icon"
-        stroke="red"
+      <EditIcon
+        @click="editTodoHandler(todo.id)"
+        v-if="!todo.completed"
+        class="edit-icon"
+        stroke="var(--accent-color)"
       />
+      <Trash @click="deleteHandler(todo.id)" class="trash-icon" stroke="red" />
     </div>
   </div>
 </template>
@@ -72,5 +84,6 @@ const changeCompeteHandler = (id: number) => {
 .features {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 </style>

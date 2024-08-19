@@ -7,6 +7,9 @@ export const useTodoStore = defineStore("todo", () => {
     { id: 2, title: "Dimas", completed: false },
     { id: 3, title: "Gena", completed: true },
   ]);
+  const sortValue = ref<"ALL" | "Complete" | "Incomplete">("ALL");
+  const inputValue = ref("");
+  const selectedTodo = ref<number | null>(null);
 
   const checkTodo = (id: number) => {
     const todo = todos.value.find((todo) => todo.id === id);
@@ -19,5 +22,17 @@ export const useTodoStore = defineStore("todo", () => {
     todos.value = todos.value.filter((todo) => todo.id !== id);
   };
 
-  return { todos, checkTodo, deleteTodo };
+  const addTodo = (todo: ITodo) => {
+    todos.value.push(todo);
+  };
+
+  return {
+    todos,
+    checkTodo,
+    deleteTodo,
+    addTodo,
+    inputValue,
+    sortValue,
+    selectedTodo,
+  };
 });

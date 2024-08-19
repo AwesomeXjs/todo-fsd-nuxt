@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { Chevron } from "@/shared/assets";
+import { useTodoStore } from "@/entities/todo";
+import { useSortUtils } from "../model/useSortUtils";
 
-import { useChangeSort } from "../model/changeSortValue";
+const store = useTodoStore();
 
-const { sortValue, isSortShow, changeSortValue, changeSortShow } =
-  useChangeSort();
+const { isSortShow, changeSortValue, changeSortShow } = useSortUtils();
 </script>
 
 <template>
   <div class="sort-wrapper">
     <div @click="changeSortShow" class="sort-header">
-      <p>{{ sortValue }}</p>
+      <p>{{ store.sortValue }}</p>
       <Chevron :class="['chevron', { 'chevron-rotate': isSortShow }]" />
     </div>
     <div class="sort-choice" v-if="isSortShow">
