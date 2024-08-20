@@ -15,6 +15,8 @@ const cancelHandler = () => {
 <template>
   <MyModal :modal-show="appStore.createTodoModalShow">
     <MyForm
+      :title="$t('titleNewTodo')"
+      :placeholder="$t('placeholderNewTodo')"
       @cancel="cancelHandler"
       @success="addTodo"
       v-model:input-value="inputValue"

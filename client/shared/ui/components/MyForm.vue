@@ -2,23 +2,32 @@
 const emit = defineEmits(["success", "cancel"]);
 
 const inputValue = defineModel("inputValue");
+
+defineProps<{
+  title: string;
+  placeholder: string;
+}>();
 </script>
 
 <template>
   <div class="form-header">
-    <h3>NEW NOTE</h3>
+    <h3>{{ title }}</h3>
     <input
       v-focus
       @keydown.enter="emit('success')"
       v-model="inputValue"
-      placeholder="Input your note..."
+      :placeholder="placeholder"
       class="new-todo-input"
       type="text"
     />
   </div>
   <div class="buttons-wrapper">
-    <MyButton @click="emit('cancel')" variant="cancel">CANCEL</MyButton>
-    <MyButton @click="emit('success')" variant="apply">APPLY</MyButton>
+    <MyButton @click="emit('cancel')" variant="cancel">{{
+      $t("cancelButton")
+    }}</MyButton>
+    <MyButton @click="emit('success')" variant="apply">{{
+      $t("accessButton")
+    }}</MyButton>
   </div>
 </template>
 

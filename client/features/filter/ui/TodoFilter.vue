@@ -9,7 +9,7 @@ const store = useTodoStore();
   <div class="input-wrapper">
     <input
       v-model="store.inputValue"
-      placeholder="Search note..."
+      :placeholder="$t('placeholderFilter')"
       class="filter"
       type="text"
       name="filterName"
