@@ -65,7 +65,7 @@ defineProps<{
   position: absolute;
   bottom: 0;
   top: 100%;
-  width: 100%;
+  min-width: 100%;
   left: 0;
   z-index: 5;
   border-radius: $border-radius;
@@ -74,12 +74,15 @@ defineProps<{
   display: flex;
   flex-direction: column;
   animation: animationSort 0.2s ease-out alternate;
+  white-space: nowrap;
+
   & > div {
     border: 1px solid var(--accent-color);
     cursor: pointer;
     padding: 2px 5px;
     transition: $transition;
     background-color: var(--background-color);
+    box-sizing: content-box;
     &:hover {
       background-color: var(--placeholder-color);
       color: white;
