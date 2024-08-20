@@ -6,20 +6,17 @@ export const useEditUtils = () => {
   const store = useAppStore();
   const editValue = ref<string>("");
 
-  const currentTodo = todoStore.todos.find(
-    (todo) => todo.id === todoStore.selectedTodo
-  );
-
   const editTodo = () => {
+    const currentTodo = todoStore.todos.find(
+      (todo) => todo.id === todoStore.selectedTodo
+    );
     if (currentTodo) {
       currentTodo.title = editValue.value;
     }
     todoStore.selectedTodo = null;
     store.editTodoModalShow = false;
+    editValue.value = "";
   };
-  if (currentTodo) {
-    editValue.value = currentTodo.title;
-  }
 
   return { editTodo, editValue };
 };

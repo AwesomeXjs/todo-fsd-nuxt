@@ -35,6 +35,7 @@ const store = useTodoStore();
   transition: $transition;
   width: 100%;
   border: none;
+  background-color: var(--background-color);
   &::placeholder {
     color: var(--placeholder-color);
   }
