@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { useThemeChange } from "../model/useThemeChange";
+const inputValue = ref<boolean>(false);
 
-const { inputValue } = useThemeChange();
+const changeTheme = () => {
+  if (inputValue.value === true) {
+    document.documentElement.setAttribute("dark", "");
+  } else {
+    document.documentElement.removeAttribute("dark");
+  }
+};
+watch(inputValue, () => {
+  changeTheme();
+});
 </script>
 
 <template>

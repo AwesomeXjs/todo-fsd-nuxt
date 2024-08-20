@@ -7,7 +7,7 @@ export const useSortUtils = (searchTodos: any = null) => {
   const changeSortShow = () => {
     isSortShow.value = !isSortShow.value;
   };
-  const changeSortValue = (value: "ALL" | "Complete" | "Incomplete") => {
+  const changeSortValue = (value: string) => {
     todoStore.sortValue = value;
   };
 
@@ -15,13 +15,13 @@ export const useSortUtils = (searchTodos: any = null) => {
     if (searchTodos) {
       const todoStore = useTodoStore();
 
-      if (todoStore.sortValue === "ALL") {
+      if (todoStore.sortValue === "sortChoiceAll") {
         return [...searchTodos.value];
       }
-      if (todoStore.sortValue === "Incomplete") {
+      if (todoStore.sortValue === "sortChoiceInComplete") {
         return [...searchTodos.value].filter((todo) => !todo.completed);
       }
-      if (todoStore.sortValue === "Complete") {
+      if (todoStore.sortValue === "sortChoiceComplete") {
         return [...searchTodos.value].filter((todo) => todo.completed);
       }
     }

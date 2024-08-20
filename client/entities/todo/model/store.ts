@@ -7,7 +7,7 @@ export const useTodoStore = defineStore("todo", () => {
     { id: 2, title: "Dimas", completed: false },
     { id: 3, title: "Gena", completed: true },
   ]);
-  const sortValue = ref<"ALL" | "Complete" | "Incomplete">("ALL");
+  const sortValue = ref<string>("sortChoiceAll");
   const inputValue = ref("");
   const selectedTodo = ref<number | null>(null);
 

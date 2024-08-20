@@ -53,4 +53,7 @@ export default defineNuxtConfig({
   },
 
   modules: ["@pinia/nuxt", "@nuxt/fonts", "@nuxtjs/i18n"],
+  i18n: {
+    vueI18n: "@/shared/lib/i18n/i18n.config.ts", // if you are using custom path, default
+  },
 });

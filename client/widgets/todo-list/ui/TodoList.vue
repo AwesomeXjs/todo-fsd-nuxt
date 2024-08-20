@@ -10,6 +10,12 @@ console.log();
 </script>
 
 <template>
+  <div class="empty-wrapper" v-if="sortedAndFilteredTodos?.length === 0">
+    <div class="empty_todo_list">
+      <img src="/detective.svg" alt="" />
+      <h3>Empty...</h3>
+    </div>
+  </div>
   <div class="todo-list">
     <TransitionGroup name="todos">
       <TodoItem
@@ -48,5 +54,16 @@ console.log();
 .todos-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+.empty_todo_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
 </style>

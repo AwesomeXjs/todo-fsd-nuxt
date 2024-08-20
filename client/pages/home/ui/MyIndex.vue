@@ -18,7 +18,7 @@ useSeoMeta({
 });
 
 // example composables
-const { sayExample } = useExample();
+const { sayExample } = useUtils();
 sayExample();
 
 onMounted(() => {
