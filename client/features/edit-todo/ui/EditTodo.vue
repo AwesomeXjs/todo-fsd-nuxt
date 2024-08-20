@@ -10,6 +10,8 @@ const { editTodo, editValue } = useEditUtils();
 <template>
   <MyModal :modal-show="store.editTodoModalShow">
     <MyForm
+      :title="$t('titleEditTodo')"
+      :placeholder="$t('placeholderEditTodo')"
       v-model:input-value="editValue"
       @cancel="store.editTodoModalShow = false"
       @success="editTodo"

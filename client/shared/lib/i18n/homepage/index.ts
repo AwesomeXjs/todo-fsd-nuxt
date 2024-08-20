@@ -30,6 +30,10 @@ export const i18nHomepage = {
     cancelButton: "ОТМЕНА",
     accessButton: "ДОБАВИТЬ",
 
+    //edit todo
+    placeholderEditTodo: "Изменить задачу...",
+    titleEditTodo: "ИЗМЕНИТЬ ЗАДАЧУ",
+
     //filter
     placeholderFilter: "Найти задачу...",
   },
