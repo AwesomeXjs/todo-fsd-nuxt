@@ -13,6 +13,10 @@ export const i18nHomepage = {
     cancelButton: "CANCEL",
     accessButton: "APPLY",
 
+    //edit todo
+    placeholderEditTodo: "Edit todo...",
+    titleEditTodo: "EDIT TODO",
+
     //filter
     placeholderFilter: "Search task...",
   },
