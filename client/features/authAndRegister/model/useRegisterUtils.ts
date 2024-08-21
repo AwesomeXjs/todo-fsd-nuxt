@@ -1,37 +1,36 @@
-import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
 
 import { useToastConfig } from "../config/useToastConfig";
 
-export const useRegisterUtils = () => {
-  const email = ref<string>("");
-  const password = ref<string>("");
-  const isLoading = ref<boolean>(false);
+export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void) => {
+  const { handleSubmit, isSubmitting } = useForm({
+    validationSchema: toTypedSchema(RegisterSchema),
+  });
 
   //get auth instance
   const auth = useFirebaseAuth();
 
-  const sighUp = async (): Promise<void> => {
+  const submitRegister = handleSubmit(async (value, ctx) => {
     const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
       "Идет проверка...",
       "Регистрация прошла успешно!"
     );
     try {
-      isLoading.value = true;
-      const { user } = await createUserWithEmailAndPassword(auth!, email.value, password.value);
+      const { user } = await createUserWithEmailAndPassword(auth!, value.email, value.password);
+      await updateProfile(user, { displayName: value.name });
       toastUpdateSuccess();
+      changeBackShow();
+      return await navigateTo("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toastUpdateError(error);
       }
     } finally {
-      isLoading.value = false;
     }
-  };
+  });
 
   return {
-    email,
-    password,
-    isLoading,
-    sighUp,
+    submitRegister,
+    isSubmitting,
   };
 };

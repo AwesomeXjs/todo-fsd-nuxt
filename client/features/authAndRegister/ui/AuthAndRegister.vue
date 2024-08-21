@@ -1,11 +1,9 @@
 <script setup lang="ts">
+  import { useRegisterUtils } from "@/features/authAndRegister/model/useRegisterUtils";
   import { useAppStore } from "@/shared/store";
-  import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
 
-  import { useToastConfig } from "../config/useToastConfig";
   import { useValidate } from "../config/validations";
   import { authModalContentUtils } from "../model/authUtils";
-  import { useRegisterUtils } from "../model/useRegisterUtils";
 
   const store = useAppStore();
 
@@ -17,32 +15,7 @@
   const { authTitle, toggleAuth } = authModalContentUtils();
 
   const { ForgotPasswordSchema, RegisterSchema, LoginSchema } = useValidate();
-  const { handleSubmit, isSubmitting } = useForm({
-    validationSchema: toTypedSchema(RegisterSchema),
-  });
-
-  //get auth instance
-  const auth = useFirebaseAuth();
-
-  const submit = handleSubmit(async (value, ctx) => {
-    const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
-      "Идет проверка...",
-      "Регистрация прошла успешно!"
-    );
-    try {
-      const { user } = await createUserWithEmailAndPassword(auth!, value.email, value.password);
-      await updateProfile(user, { displayName: value.name });
-      // redirect the user to the login page
-      toastUpdateSuccess();
-      props.changeBackShow();
-      return await navigateTo("/dashboard");
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        toastUpdateError(error);
-      }
-    } finally {
-    }
-  });
+  const { submitRegister, isSubmitting } = useRegisterUtils(RegisterSchema, props.changeBackShow);
 </script>
 
 <template>
@@ -57,7 +30,7 @@
             {{ authTitle.question }}
           </p>
         </div>
-        <form @submit.prevent="submit" class="mt-10">
+        <form @submit.prevent="submitRegister" class="mt-10">
           <fieldset :disabled="isSubmitting" class="grid gap-5">
             <UiVeeInput
               v-if="!store.isAuth"
@@ -99,22 +72,6 @@
           </fieldset>
         </form>
       </div>
-      <!--      <form @submit.prevent="submitForm">-->
-      <!--        <h1>{{ authTitle.title }}</h1>-->
-      <!--        <div>-->
-      <!--          <input v-model="email" name="email" type="text" />-->
-      <!--          <label for="email">{{ t("signModalEmail") }}</label>-->
-      <!--        </div>-->
-      <!--        <p @click="toggleAuth">{{ authTitle.question }}</p>-->
-      <!--        <div>-->
-      <!--          <input v-model="password" name="password" type="password" />-->
-      <!--          <label for="password">{{ t("signModalPass") }}</label>-->
-      <!--        </div>-->
-      <!--        <div class="btn_wrapper">-->
-      <!--          <MyButton variant="cancel">Отмена</MyButton>-->
-      <!--          <MyButton type="submit" variant="apply">{{ authTitle.btn }}</MyButton>-->
-      <!--        </div>-->
-      <!--      </form>-->
     </UiContainer>
   </MyModal>
 </template>
