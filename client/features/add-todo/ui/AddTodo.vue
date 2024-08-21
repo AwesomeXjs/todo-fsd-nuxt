@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useAddTodo } from "../model/useAddTodo";
-import { useAppStore } from "@/shared/store/useAppStore";
-import MyForm from "@/shared/ui/components/MyForm.vue";
 
-const appStore = useAppStore();
+const { t } = useI18n();
 
 const { inputValue, addTodo } = useAddTodo();
 
@@ -25,8 +23,8 @@ const successHandler = () => {
 <template>
   <MyModal @closeModal="changeBackShow" :modal-show="isBackShow">
     <MyForm
-      :title="$t('titleNewTodo')"
-      :placeholder="$t('placeholderNewTodo')"
+      :title="t('titleNewTodo')"
+      :placeholder="t('placeholderNewTodo')"
       @cancel="cancelHandler"
       @success="successHandler"
       v-model:input-value="inputValue"

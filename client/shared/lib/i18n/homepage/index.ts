@@ -23,6 +23,19 @@ export const i18nHomepage = {
     //Languages choice
     RU: "RU",
     EN: "EN",
+
+    //AUTH modal SIGNIN
+    authTitleEnter: "Sign up",
+    authBtnEnter: "Enter",
+    authQuestionEnter: "Don't have an account?",
+
+    //AUTH modal SIGNUP
+    authTitleSignUp: "Sign up",
+    authBtnSignUp: "Sign up",
+    authQuestionSignUp: "Already have an account?",
+
+    signModalPass: "Password",
+    signModalEmail: "Email",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -48,5 +61,18 @@ export const i18nHomepage = {
     //Languages choice
     RU: "Русский",
     EN: "Английский",
+
+    //AUTH modal SIGNUP
+    authTitleEnter: "Вход",
+    authBtnEnter: "Войти",
+    authQuestionEnter: "Нет аккаунта?",
+
+    //AUTH modal SIGNIN
+    authTitleSignUp: "Регистрация",
+    authBtnSignUp: "Зарегистрироваться",
+    authQuestionSignUp: "У вас уже есть аккаунт?",
+
+    signModalPass: "Пароль",
+    signModalEmail: "Электронная почта",
   },
 };

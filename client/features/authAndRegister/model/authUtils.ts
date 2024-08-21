@@ -3,19 +3,20 @@ import { useAppStore } from "@/shared/store";
 
 export const authModalContentUtils = () => {
   const store = useAppStore();
+  const { t } = useI18n();
 
   const authTitle = computed<IAuthObj>(() => {
     if (store.isAuth) {
       return {
-        title: "Вход",
-        btn: "Войти",
-        question: "Нет аккаунта?",
+        title: t("authTitleEnter"),
+        btn: t("authBtnEnter"),
+        question: t("authQuestionEnter"),
       };
     }
     return {
-      title: "Регистрация",
-      btn: "Зарегестрировать",
-      question: "У вас уже есть аккаунт?",
+      title: t("authTitleSignUp"),
+      btn: t("authBtnSignUp"),
+      question: t("authQuestionSignUp"),
     };
   });
 
