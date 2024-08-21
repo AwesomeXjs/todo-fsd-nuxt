@@ -52,8 +52,22 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@pinia/nuxt", "@nuxt/fonts", "@nuxtjs/i18n"],
+  modules: ["@pinia/nuxt", "@nuxt/fonts", "@nuxtjs/i18n", "nuxt-vuefire"],
   i18n: {
-    vueI18n: "@/shared/lib/i18n/i18n.config.ts", // if you are using custom path, default
+    vueI18n: "@/shared/lib/i18n/i18n.config.ts",
+  },
+  vuefire: {
+    auth: {
+      enabled: true,
+      sessionCookie: true,
+    },
+    config: {
+      apiKey: process.env.apiKey,
+      authDomain: process.env.authDomain,
+      projectId: process.env.projectId,
+      storageBucket: process.env.storageBucket,
+      messagingSenderId: process.env.messagingSenderId,
+      appId: process.env.appId,
+    },
   },
 });
