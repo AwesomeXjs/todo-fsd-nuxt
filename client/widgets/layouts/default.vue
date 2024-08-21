@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAppStore } from "@/shared/store/useAppStore";
+import { AuthAndRegister } from "@/features/authAndRegister";
 
 const store = useAppStore();
 const { locale, setLocale } = useI18n();
@@ -30,11 +31,7 @@ const items = [
     <header class="header">
       <p>{{ $t("homepageTitle") }}</p>
       <div class="header-right">
-        <MySelectionInput
-          class="lang_select"
-          :title="store.language"
-          :items="items"
-        />
+        <MySelectionInput :title="store.language" :items="items" />
         <MyButton @click="changeBackShow" variant="apply">Войти</MyButton>
         <ThemeChanger />
       </div>
@@ -43,7 +40,10 @@ const items = [
       <slot></slot>
     </main>
   </div>
-  <MyModal @closeModal="changeBackShow" :modal-show="isBackShow"></MyModal>
+  <AuthAndRegister
+    :change-back-show="changeBackShow"
+    :is-back-show="isBackShow"
+  />
 </template>
 
 <style scoped>
@@ -63,8 +63,5 @@ const items = [
   display: flex;
   align-items: center;
   gap: 15px;
-}
-.lang_select {
-  width: 100px;
 }
 </style>

@@ -26,6 +26,9 @@ const user = await getCurrentUser();
 onMounted(() => {
   // example plugins
   nuxtApp.$sayHello();
+  nuxtApp.$toast("Hello from Nuxt 3", {
+    type: "success",
+  });
 });
 
 console.log(user);

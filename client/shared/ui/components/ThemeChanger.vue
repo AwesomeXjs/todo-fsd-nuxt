@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { useAppStore } from "@/shared/store";
+
+const store = useAppStore();
+
 const inputValue = ref<boolean>(false);
 
 const changeTheme = () => {
   if (inputValue.value === true) {
     document.documentElement.setAttribute("dark", "");
+    store.appTheme = "dark";
   } else {
     document.documentElement.removeAttribute("dark");
+    store.appTheme = "light";
   }
 };
 watch(inputValue, () => {

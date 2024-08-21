@@ -19,6 +19,10 @@ export const i18nHomepage = {
 
     //filter
     placeholderFilter: "Search task...",
+
+    //Languages choice
+    RU: "RU",
+    EN: "EN",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -40,5 +44,9 @@ export const i18nHomepage = {
 
     //filter
     placeholderFilter: "Найти задачу...",
+
+    //Languages choice
+    RU: "Русский",
+    EN: "Английский",
   },
 };

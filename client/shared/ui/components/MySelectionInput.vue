@@ -21,7 +21,7 @@ defineProps<{
       <Chevron :class="['chevron', { 'chevron-rotate': isBackShow }]" />
     </button>
     <div class="sort-choice" v-if="isBackShow">
-      <div v-for="item in items" :key="item.title" @click="item.method">
+      <div v-for="(item, index) of items" :key="index" @click="item.method">
         <p>{{ $t(item.title) }}</p>
       </div>
     </div>
