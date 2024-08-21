@@ -1,5 +1,5 @@
-import type { ITodo } from "@/entities/todo";
 import { useTodoStore } from "@/entities/todo";
+import type { ITodo } from "@/entities/todo";
 
 export const useFilter = () => {
   const todoStore = useTodoStore();

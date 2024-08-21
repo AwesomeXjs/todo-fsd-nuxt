@@ -1,28 +1,29 @@
 <script setup lang="ts">
-import { EditIcon, Trash } from "@/shared/assets";
-import type { ITodo } from "../model/types";
-import { useTodoStore } from "../model/store";
-import { useAppStore } from "@/shared/store/useAppStore";
+  import { EditIcon, Trash } from "@/shared/assets";
+  import { useAppStore } from "@/shared/store/useAppStore";
+  import type { ITodo } from "../model/types";
 
-const appStore = useAppStore();
-const store = useTodoStore();
+  import { useTodoStore } from "../model/store";
 
-defineProps<{
-  todo: ITodo;
-}>();
+  const appStore = useAppStore();
+  const store = useTodoStore();
 
-const changeCompeteHandler = (id: number) => {
-  store.checkTodo(id);
-};
+  defineProps<{
+    todo: ITodo;
+  }>();
 
-const deleteHandler = (id: number) => {
-  store.deleteTodo(id);
-};
+  const changeCompeteHandler = (id: number) => {
+    store.checkTodo(id);
+  };
 
-const editTodoHandler = (id: number) => {
-  store.selectedTodo = id;
-  store.editModalShow = true;
-};
+  const deleteHandler = (id: number) => {
+    store.deleteTodo(id);
+  };
+
+  const editTodoHandler = (id: number) => {
+    store.selectedTodo = id;
+    store.editModalShow = true;
+  };
 </script>
 
 <template>
@@ -49,41 +50,41 @@ const editTodoHandler = (id: number) => {
 </template>
 
 <style scoped lang="scss">
-.todo-item {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--accent-color-light);
-  padding: 17px 0;
-}
-.todo-content {
-  display: flex;
-  font-weight: bold;
-}
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--accent-color-light);
+    padding: 17px 0;
+  }
+  .todo-content {
+    display: flex;
+    font-weight: bold;
+  }
 
-.completeTodo {
-  text-decoration: line-through;
-  color: var(--placeholder-color);
-}
-.checkbox {
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  margin-right: 17px;
-}
-.edit-icon,
-.trash-icon {
-  cursor: pointer;
-  transition: $transition;
-  &:hover {
-    transform: scale(1.1);
+  .completeTodo {
+    text-decoration: line-through;
+    color: var(--placeholder-color);
   }
-  &:active {
-    transform: scale(0.8);
+  .checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 17px;
   }
-}
-.features {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  .edit-icon,
+  .trash-icon {
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+  .features {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 </style>

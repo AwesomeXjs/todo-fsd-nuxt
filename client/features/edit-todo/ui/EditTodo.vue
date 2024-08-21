@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { useEditUtils } from "../model/useEditUtils";
-import { useTodoStore } from "@/entities/todo";
+  import { useTodoStore } from "@/entities/todo";
 
-const todoStore = useTodoStore();
+  import { useEditUtils } from "../model/useEditUtils";
 
-const { editTodo, editValue } = useEditUtils();
+  const todoStore = useTodoStore();
 
-const successHandler = () => {
-  todoStore.closeModalShow();
-  editTodo();
-};
+  const { editTodo, editValue } = useEditUtils();
+
+  const successHandler = () => {
+    todoStore.closeModalShow();
+    editTodo();
+  };
 </script>
 
 <template>
-  <MyModal
-    @closeModal="todoStore.closeModalShow"
-    :modal-show="todoStore.editModalShow"
-  >
+  <MyModal @closeModal="todoStore.closeModalShow" :modal-show="todoStore.editModalShow">
     <MyForm
       :title="$t('titleEditTodo')"
       :placeholder="$t('placeholderEditTodo')"

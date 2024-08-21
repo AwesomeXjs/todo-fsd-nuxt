@@ -26,10 +26,27 @@ export default defineNuxtConfig({
       // ... or scan all modules within given directory
       "client/shared/lib/composables/**",
     ],
+
+    imports: [
+      {
+        from: "tailwind-variants",
+        name: "tv",
+      },
+      {
+        from: "tailwind-variants",
+        name: "VariantProps",
+        type: true,
+      },
+      {
+        from: "vue-sonner",
+        name: "toast",
+        as: "useSonner",
+      },
+    ],
   },
 
   components: [{ path: "~/client/shared/ui/components", extensions: ["vue"] }],
-  css: ["@/app/config/scss/_style.scss"],
+  css: ["~/client/app/config/tailwind/tailwind.css", "@/app/config/scss/_style.scss"],
 
   fonts: {
     families: [
@@ -52,10 +69,23 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@pinia/nuxt", "@nuxt/fonts", "@nuxtjs/i18n", "nuxt-vuefire"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxt/fonts",
+    "@nuxtjs/i18n",
+    "nuxt-vuefire",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "@vueuse/nuxt",
+    "nuxt-icon",
+    "@vee-validate/nuxt",
+    "@morev/vue-transitions/nuxt",
+  ],
+
   i18n: {
     vueI18n: "@/shared/lib/i18n/i18n.config.ts",
   },
+
   vuefire: {
     auth: {
       enabled: true,
@@ -69,5 +99,9 @@ export default defineNuxtConfig({
       messagingSenderId: process.env.messagingSenderId,
       appId: process.env.appId,
     },
+  },
+
+  build: {
+    transpile: ["vue-sonner"],
   },
 });

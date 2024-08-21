@@ -7,9 +7,7 @@ export const useEditUtils = () => {
   const editValue = ref<string>("");
 
   const editTodo = () => {
-    const currentTodo = todoStore.todos.find(
-      (todo) => todo.id === todoStore.selectedTodo
-    );
+    const currentTodo = todoStore.todos.find((todo) => todo.id === todoStore.selectedTodo);
     if (currentTodo) {
       currentTodo.title = editValue.value;
     }

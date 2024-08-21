@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { TodoFilter } from "@/features/filter";
-import { TodoSort } from "@/features/sort";
+  import { TodoFilter } from "@/features/filter";
+  import { TodoSort } from "@/features/sort";
 </script>
 
 <template>
@@ -11,9 +11,9 @@ import { TodoSort } from "@/features/sort";
 </template>
 
 <style scoped>
-.app-widgets {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
+  .app-widgets {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
 </style>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const emit = defineEmits(["success", "cancel"]);
+  const emit = defineEmits(["success", "cancel"]);
 
-const inputValue = defineModel("inputValue");
+  const inputValue = defineModel("inputValue");
 
-defineProps<{
-  title: string;
-  placeholder: string;
-}>();
+  defineProps<{
+    title: string;
+    placeholder: string;
+  }>();
 </script>
 
 <template>
@@ -22,42 +22,38 @@ defineProps<{
     />
   </div>
   <div class="buttons-wrapper">
-    <MyButton @click="emit('cancel')" variant="cancel">{{
-      $t("cancelButton")
-    }}</MyButton>
-    <MyButton @click="emit('success')" variant="apply">{{
-      $t("accessButton")
-    }}</MyButton>
+    <MyButton @click="emit('cancel')" variant="cancel">{{ $t("cancelButton") }}</MyButton>
+    <MyButton @click="emit('success')" variant="apply">{{ $t("accessButton") }}</MyButton>
   </div>
 </template>
 
 <style scoped lang="scss">
-.form-header {
-  text-align: center;
-  min-width: 400px;
-  min-height: 200px;
-  & > h3 {
-    margin-bottom: 25px;
+  .form-header {
+    text-align: center;
+    min-width: 400px;
+    min-height: 200px;
+    & > h3 {
+      margin-bottom: 25px;
+    }
   }
-}
-.new-todo-input {
-  width: 100%;
-  border: 1px solid var(--placeholder-color);
-  border-radius: $border-radius;
-  padding: 8px 12px;
-  transition: $transition;
+  .new-todo-input {
+    width: 100%;
+    border: 1px solid var(--placeholder-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    transition: 0.2s ease-out;
 
-  &:focus {
-    border: 1px solid var(--accent-color);
-  }
+    &:focus {
+      border: 1px solid var(--accent-color);
+    }
 
-  &::placeholder {
-    color: var(--placeholder-color);
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
   }
-}
-.buttons-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 </style>

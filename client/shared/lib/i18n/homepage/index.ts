@@ -30,13 +30,27 @@ export const i18nHomepage = {
     authQuestionEnter: "Don't have an account?",
 
     //AUTH modal SIGNUP
-    authTitleSignUp: "Sign up",
+    authTitleSignUp: "Create account",
     authBtnSignUp: "Sign up",
     authQuestionSignUp: "Already have an account?",
 
-    signModalPass: "Password",
-    signModalEmail: "Email",
     signInButton: "Sign in",
+
+    //AUTH PLACEHOLDERS
+    authPlaceholderName: "Write your name",
+    authPlaceholderEmail: "Write your email",
+    authPlaceholderPassword: "Write your password",
+
+    //AUTH TITLES
+    authTitleName: "Full name",
+    authTitleEmail: "Email",
+    authTitlePassword: "Password",
+    authDivide: "or",
+
+    //auth with services
+    authGoogle: "Sign in with Google",
+    authGithub: "Sign in with Github",
+    authTwitter: "Sign in with Twitter",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -69,12 +83,26 @@ export const i18nHomepage = {
     authQuestionEnter: "Нет аккаунта?",
 
     //AUTH modal SIGNIN
-    authTitleSignUp: "Регистрация",
+    authTitleSignUp: "Создать аккаунт",
     authBtnSignUp: "Зарегистрироваться",
     authQuestionSignUp: "У вас уже есть аккаунт?",
 
-    signModalPass: "Пароль",
-    signModalEmail: "Электронная почта",
     signInButton: "Войти",
+
+    //AUTH PLACEHOLDERS
+    authPlaceholderName: "Напишите ваше имя",
+    authPlaceholderEmail: "Напишите вашу почту",
+    authPlaceholderPassword: "Напишите ваш пароль",
+
+    //AUTH TITLES
+    authTitleName: "Имя",
+    authTitleEmail: "Почта",
+    authTitlePassword: "Пароль",
+    authDivide: "или",
+
+    //auth with services
+    authGoogle: "Войти с помощью Google",
+    authGithub: "Войти с помощью Github",
+    authTwitter: "Войти с помощью Twitter",
   },
 };

@@ -1,5 +1,5 @@
-import type { IAuthObj } from "./types";
 import { useAppStore } from "@/shared/store";
+import type { IAuthObj } from "./types";
 
 export const authModalContentUtils = () => {
   const store = useAppStore();

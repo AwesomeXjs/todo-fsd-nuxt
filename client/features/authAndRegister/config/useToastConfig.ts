@@ -23,7 +23,15 @@ export const useToastConfig = (loadingText: string, successText: string) => {
     $toast.update(toastId, {
       autoClose: true,
       closeOnClick: true,
-      render: error.message,
+      render: () => {
+        if (
+          error.message ===
+          "Firebase: The email address is already in use by another account. (auth/email-already-in-use)."
+        ) {
+          return "Пользователь с таким адресом электронной почты уже существует.";
+        }
+        return error.message;
+      },
       type: "error",
       theme: store.appTheme,
       isLoading: false,

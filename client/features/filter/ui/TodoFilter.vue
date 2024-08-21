@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Search } from "@/shared/assets";
-import { useTodoStore } from "@/entities/todo";
+  import { useTodoStore } from "@/entities/todo";
+  import { Search } from "@/shared/assets";
 
-const store = useTodoStore();
+  const store = useTodoStore();
 </script>
 
 <template>
@@ -21,28 +21,28 @@ const store = useTodoStore();
 </template>
 
 <style scoped lang="scss">
-.input-wrapper {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  border: 1px solid var(--placeholder-color);
-  border-radius: $border-radius;
-  overflow: hidden;
-}
-
-.filter {
-  padding: 11px 16px;
-  transition: $transition;
-  width: 100%;
-  border: none;
-  background-color: var(--background-color);
-  &::placeholder {
-    color: var(--placeholder-color);
+  .input-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border: 1px solid var(--placeholder-color);
+    border-radius: 8px;
+    overflow: hidden;
   }
-}
 
-.input-label {
-  padding-top: 9px;
-  padding-right: 15px;
-}
+  .filter {
+    padding: 11px 16px;
+    transition: 0.2s ease-out;
+    width: 100%;
+    border: none;
+    background-color: var(--background-color);
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+  }
+
+  .input-label {
+    padding-top: 9px;
+    padding-right: 15px;
+  }
 </style>
