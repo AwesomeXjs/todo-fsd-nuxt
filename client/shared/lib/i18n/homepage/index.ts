@@ -36,6 +36,7 @@ export const i18nHomepage = {
 
     signModalPass: "Password",
     signModalEmail: "Email",
+    signInButton: "Sign in",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -74,5 +75,6 @@ export const i18nHomepage = {
 
     signModalPass: "Пароль",
     signModalEmail: "Электронная почта",
+    signInButton: "Войти",
   },
 };

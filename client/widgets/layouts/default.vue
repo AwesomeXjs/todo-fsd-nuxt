@@ -3,7 +3,7 @@ import { useAppStore } from "@/shared/store/useAppStore";
 import { AuthAndRegister } from "@/features/authAndRegister";
 
 const store = useAppStore();
-const { locale, setLocale } = useI18n();
+const { locale, setLocale, t } = useI18n();
 
 const { useSelectBackgroundShow } = useUtils();
 const { changeBackShow, isBackShow } = useSelectBackgroundShow();
@@ -29,10 +29,12 @@ const items = [
 <template>
   <div class="container">
     <header class="header">
-      <p>{{ $t("homepageTitle") }}</p>
+      <p>{{ t("homepageTitle") }}</p>
       <div class="header-right">
         <MySelectionInput :title="store.language" :items="items" />
-        <MyButton @click="changeBackShow" variant="apply">Войти</MyButton>
+        <MyButton @click="changeBackShow" variant="apply">{{
+          t("signInButton")
+        }}</MyButton>
         <ThemeChanger />
       </div>
     </header>

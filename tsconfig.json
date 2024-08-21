@@ -2,7 +2,7 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": [ "vue3-toastify/global", "@nuxt/types", "@nuxtjs/i18n", "nuxt-i18n"
+    "types": [ "vue3-toastify/global", "@nuxt/types", "@nuxtjs/i18n"
     ]
   }
 }
