@@ -15,7 +15,6 @@ export const useAddTodo = () => {
         completed: false,
       });
       inputValue.value = "";
-      appStore.createTodoModalShow = false;
     }
   };
   return { addTodo, inputValue };

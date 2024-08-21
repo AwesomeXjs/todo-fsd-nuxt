@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { AppWidgets } from "@/widgets/app-widgets";
 import { TodoList } from "@/widgets/todo-list";
 import { AddTodo } from "@/features/add-todo";
@@ -30,7 +30,6 @@ onMounted(() => {
 <template>
   <AppWidgets />
   <TodoList />
-  <AddTodoButton />
   <AddTodo />
   <EditTodo />
 </template>

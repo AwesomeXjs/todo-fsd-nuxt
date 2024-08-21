@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 
 export const useAppStore = defineStore("app", () => {
-  const createTodoModalShow = ref(false);
-  const editTodoModalShow = ref(false);
   const language = ref<string>("EN");
+  const isAuth = ref<boolean>(false);
+  const authUserId = ref<number | null>(null);
 
-  return { createTodoModalShow, editTodoModalShow, language };
+  return { language };
 });

@@ -4,6 +4,9 @@ import { useAppStore } from "@/shared/store/useAppStore";
 const store = useAppStore();
 const { locale, setLocale } = useI18n();
 
+const { useSelectBackgroundShow } = useUtils();
+const { changeBackShow, isBackShow } = useSelectBackgroundShow();
+
 const items = [
   {
     title: "EN",
@@ -25,13 +28,14 @@ const items = [
 <template>
   <div class="container">
     <header class="header">
-      <h1>{{ $t("homepageTitle") }}</h1>
+      <p>{{ $t("homepageTitle") }}</p>
       <div class="header-right">
         <MySelectionInput
           class="lang_select"
           :title="store.language"
           :items="items"
         />
+        <MyButton @click="changeBackShow" variant="apply">Войти</MyButton>
         <ThemeChanger />
       </div>
     </header>
@@ -39,6 +43,7 @@ const items = [
       <slot></slot>
     </main>
   </div>
+  <MyModal @closeModal="changeBackShow" :modal-show="isBackShow"></MyModal>
 </template>
 
 <style scoped>
@@ -51,7 +56,9 @@ const items = [
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 .header-right {
   display: flex;
   align-items: center;

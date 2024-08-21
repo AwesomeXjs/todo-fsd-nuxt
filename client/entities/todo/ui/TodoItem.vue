@@ -21,7 +21,7 @@ const deleteHandler = (id: number) => {
 
 const editTodoHandler = (id: number) => {
   store.selectedTodo = id;
-  appStore.editTodoModalShow = true;
+  store.editModalShow = true;
 };
 </script>
 

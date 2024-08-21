@@ -6,17 +6,18 @@ defineProps<{
   modalShow: boolean;
 }>();
 
-const closeModals = () => {
-  appStore.createTodoModalShow = false;
-  appStore.editTodoModalShow = false;
-};
+const emit = defineEmits(["closeModal"]);
 </script>
 
 <template>
   <div @click.stop v-if="modalShow" class="modal-wrapper">
     <slot />
   </div>
-  <div v-if="modalShow" @click="closeModals" class="modal-background"></div>
+  <div
+    v-if="modalShow"
+    @click="emit('closeModal')"
+    class="modal-background"
+  ></div>
 </template>
 
 <style scoped lang="scss">

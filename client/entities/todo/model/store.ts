@@ -10,6 +10,7 @@ export const useTodoStore = defineStore("todo", () => {
   const sortValue = ref<string>("sortChoiceAll");
   const inputValue = ref("");
   const selectedTodo = ref<number | null>(null);
+  const editModalShow = ref<boolean>(false);
 
   const checkTodo = (id: number) => {
     const todo = todos.value.find((todo) => todo.id === id);
@@ -26,6 +27,10 @@ export const useTodoStore = defineStore("todo", () => {
     todos.value.push(todo);
   };
 
+  const closeModalShow = () => {
+    editModalShow.value = false;
+  };
+
   return {
     todos,
     checkTodo,
@@ -34,5 +39,7 @@ export const useTodoStore = defineStore("todo", () => {
     inputValue,
     sortValue,
     selectedTodo,
+    editModalShow,
+    closeModalShow,
   };
 });

@@ -10,7 +10,7 @@ console.log();
 </script>
 
 <template>
-  <div class="empty-wrapper" v-if="sortedAndFilteredTodos?.length === 0">
+  <div class="empty-wrapper" v-show="sortedAndFilteredTodos?.length === 0">
     <div class="empty_todo_list">
       <img src="/detective.svg" alt="" />
       <h3>Empty...</h3>
@@ -27,7 +27,7 @@ console.log();
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .todo-list {
   max-width: 520px;
   margin: 0 auto;

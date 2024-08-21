@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
 
   dir: {
-    layouts: "client/shared/ui/layouts",
+    layouts: "client/widgets/layouts",
     plugins: "client/shared/lib/plugins",
     middleware: "client/shared/lib/middleware",
     app: "client/app",

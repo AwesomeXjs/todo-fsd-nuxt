@@ -16,13 +16,13 @@ defineProps<{
 
 <template>
   <div class="sort-wrapper">
-    <div @click="changeBackShow" class="sort-header">
+    <button @click="changeBackShow" class="sort-header">
       <p>{{ $t(title) }}</p>
       <Chevron :class="['chevron', { 'chevron-rotate': isBackShow }]" />
-    </div>
+    </button>
     <div class="sort-choice" v-if="isBackShow">
       <div v-for="item in items" :key="item.title" @click="item.method">
-        {{ $t(item.title) }}
+        <p>{{ $t(item.title) }}</p>
       </div>
     </div>
   </div>
@@ -34,18 +34,15 @@ defineProps<{
 <style lang="scss">
 .sort-wrapper {
   position: relative;
-  display: flex;
-  justify-content: center;
 }
 .sort-header {
   cursor: pointer;
-  max-height: 38px;
   //min-width: 250px;
   background-color: var(--accent-color);
   border: 2px solid var(--accent-color);
   display: flex;
   color: white;
-  padding: 5px 20px;
+  padding: 8px 20px;
   align-items: center;
   border-radius: $border-radius;
   gap: 25px;
@@ -75,6 +72,7 @@ defineProps<{
   flex-direction: column;
   animation: animationSort 0.2s ease-out alternate;
   white-space: nowrap;
+  font-size: $regular-text;
 
   & > div {
     border: 1px solid var(--accent-color);

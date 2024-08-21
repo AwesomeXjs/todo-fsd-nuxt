@@ -1,7 +1,7 @@
 export const useUtils = () => {
   const sayExample = () => console.log("HELLO FROM COMPOSABLES");
 
-  const useSelectBackgroundShow = (searchTodos: any = null) => {
+  const useSelectBackgroundShow = () => {
     const isBackShow = ref(false);
     const changeBackShow = () => {
       isBackShow.value = !isBackShow.value;
