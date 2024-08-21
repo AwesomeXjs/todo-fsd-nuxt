@@ -3,7 +3,6 @@ import { AppWidgets } from "@/widgets/app-widgets";
 import { TodoList } from "@/widgets/todo-list";
 import { AddTodo } from "@/features/add-todo";
 import { EditTodo } from "@/features/edit-todo";
-import { getCurrentUser } from "vuefire";
 
 const nuxtApp = useNuxtApp();
 
@@ -22,7 +21,6 @@ useSeoMeta({
 const { sayExample } = useUtils();
 sayExample();
 
-const user = await getCurrentUser();
 onMounted(() => {
   // example plugins
   nuxtApp.$sayHello();
@@ -30,8 +28,6 @@ onMounted(() => {
     type: "success",
   });
 });
-
-console.log(user);
 </script>
 
 <template>

@@ -24,12 +24,12 @@ const auth = useFirebaseAuth();
 const sighUp = async (): Promise<void> => {
   try {
     isLoading.value = true;
+
     const { user } = await createUserWithEmailAndPassword(
       auth!,
       email.value,
       password.value
     );
-    await updateProfile(user, { displayName: email.value });
   } catch (error: unknown) {
     if (error instanceof Error) {
       $toast(error.message, { type: "error", theme: store.appTheme });

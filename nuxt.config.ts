@@ -59,7 +59,7 @@ export default defineNuxtConfig({
   vuefire: {
     auth: {
       enabled: true,
-      sessionCookie: true,
+      sessionCookie: false,
     },
     config: {
       apiKey: process.env.apiKey,
