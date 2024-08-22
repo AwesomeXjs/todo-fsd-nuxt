@@ -8,6 +8,14 @@
   const { useSelectBackgroundShow } = useUtils();
   const { changeBackShow, isBackShow } = useSelectBackgroundShow();
 
+  const signUpText = computed(() => {
+    if (store.isAuth) {
+      return t("authBtnEnter");
+    } else {
+      return t("authBtnSignUp");
+    }
+  });
+
   const items = [
     {
       title: "EN",
@@ -32,7 +40,7 @@
       <p>{{ t("homepageTitle") }}</p>
       <div class="header-right">
         <MySelectionInput :title="store.language" :items="items" />
-        <UiButton @click="changeBackShow" variant="secondary">{{ t("signInButton") }}</UiButton>
+        <UiButton @click="changeBackShow" variant="secondary">{{ signUpText }}</UiButton>
         <ThemeChanger />
       </div>
     </header>

@@ -1,5 +1,6 @@
 <script setup>
   import { AddTodo } from "@/features/add-todo";
+  import { AuthAndRegister } from "@/features/authAndRegister";
   import { EditTodo } from "@/features/edit-todo";
   import { AppWidgets } from "@/widgets/app-widgets";
   import { TodoList } from "@/widgets/todo-list";

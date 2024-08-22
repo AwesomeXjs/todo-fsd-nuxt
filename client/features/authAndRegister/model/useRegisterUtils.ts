@@ -9,15 +9,20 @@ export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void
 
   //get auth instance
   const auth = useFirebaseAuth();
-
   const submitRegister = handleSubmit(async (value, ctx) => {
+    /**
+     *
+     *
+     */
     const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
       "Идет проверка...",
       "Регистрация прошла успешно!"
     );
     try {
       const { user } = await createUserWithEmailAndPassword(auth!, value.email, value.password);
-      await updateProfile(user, { displayName: value.name });
+      await updateProfile(user, {
+        displayName: value.name,
+      });
       toastUpdateSuccess();
       changeBackShow();
       return await navigateTo("/dashboard");

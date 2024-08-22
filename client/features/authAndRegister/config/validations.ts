@@ -8,12 +8,12 @@ export const useValidate = () => {
   });
 
   const LoginSchema = object().shape({
-    email: string().required("Email is required").label("Email").email(),
-    password: string().required("Password is required").label("Password").min(6).max(50),
+    email: string().required().label("Email").email(),
+    password: string().required().label("Password").min(6).max(50),
   });
 
   const ForgotPasswordSchema = object().shape({
-    email: string().required("Email is required").label("Email").email(),
+    email: string().required().label("Email").email(),
   });
   return {
     RegisterSchema,

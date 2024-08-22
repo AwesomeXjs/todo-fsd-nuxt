@@ -42,7 +42,7 @@ export const i18nHomepage = {
     authPlaceholderPassword: "Write your password",
 
     //AUTH TITLES
-    authTitleName: "Full name",
+    authTitleName: "Name",
     authTitleEmail: "Email",
     authTitlePassword: "Password",
     authDivide: "or",
@@ -51,6 +51,14 @@ export const i18nHomepage = {
     authGoogle: "Sign in with Google",
     authGithub: "Sign in with Github",
     authTwitter: "Sign in with Twitter",
+
+    //AUTH ERRORS
+    authUpdateError: "User with this email already exists.",
+
+    //FORGOR PASS MODAL
+    forgotPassTitle: "Forgot password?",
+    forgotPassText: "Enter your email and we will send you a link to reset your password",
+    forgotPassBtn: "Send email",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -104,5 +112,13 @@ export const i18nHomepage = {
     authGoogle: "Войти с помощью Google",
     authGithub: "Войти с помощью Github",
     authTwitter: "Войти с помощью Twitter",
+
+    //AUTH ERRORS
+    authUpdateError: "Пользователь с таким адресом электронной почты уже существует.",
+
+    //FORGOR PASS MODAL
+    forgotPassTitle: "Забыли пароль?",
+    forgotPassText: "Введите вашу почту и мы вышлем вам ссылку для сброса пароля",
+    forgotPassBtn: "Отправить почту",
   },
 };

@@ -6,18 +6,26 @@ export const authModalContentUtils = () => {
   const { t } = useI18n();
 
   const authTitle = computed<IAuthObj>(() => {
-    if (store.isAuth) {
+    if (store.isAuth && !store.isForgotPassword) {
       return {
         title: t("authTitleEnter"),
         btn: t("authBtnEnter"),
         question: t("authQuestionEnter"),
       };
     }
-    return {
-      title: t("authTitleSignUp"),
-      btn: t("authBtnSignUp"),
-      question: t("authQuestionSignUp"),
-    };
+    if (!store.isAuth && !store.isForgotPassword) {
+      return {
+        title: t("signInButton"),
+        btn: t("authBtnSignUp"),
+        question: t("authQuestionSignUp"),
+      };
+    } else {
+      return {
+        title: t("forgotPassTitle"),
+        btn: t("forgotPassBtn"),
+        question: t("forgotPassText"),
+      };
+    }
   });
 
   const toggleAuth = () => {
