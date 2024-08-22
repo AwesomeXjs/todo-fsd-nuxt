@@ -2,24 +2,20 @@ import { defineStore } from "pinia";
 import type { ITodo } from "./types";
 
 export const useTodoStore = defineStore("todo", () => {
-  const todos = ref<ITodo[]>([
-    { id: 1, title: "Vlados", completed: true },
-    { id: 2, title: "Dimas", completed: false },
-    { id: 3, title: "Gena", completed: true },
-  ]);
+  const todos = ref<ITodo[]>([]);
   const sortValue = ref<string>("sortChoiceAll");
   const inputValue = ref("");
-  const selectedTodo = ref<number | null>(null);
+  const selectedTodo = ref<string | null>(null);
   const editModalShow = ref<boolean>(false);
 
-  const checkTodo = (id: number) => {
+  const checkTodo = (id: string) => {
     const todo = todos.value.find((todo) => todo.id === id);
     if (todo) {
       todo.completed = !todo.completed;
     }
   };
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (id: string) => {
     todos.value = todos.value.filter((todo) => todo.id !== id);
   };
 

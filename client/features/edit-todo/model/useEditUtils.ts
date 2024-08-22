@@ -12,7 +12,6 @@ export const useEditUtils = () => {
       currentTodo.title = editValue.value;
     }
     todoStore.selectedTodo = null;
-    store.editTodoModalShow = false;
     editValue.value = "";
   };
 

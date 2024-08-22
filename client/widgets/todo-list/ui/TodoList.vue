@@ -1,16 +1,45 @@
 <script setup lang="ts">
-  import { TodoItem } from "@/entities/todo";
+  import { TodoItem, useTodoStore } from "@/entities/todo";
   import { useFilter } from "@/features/filter";
   import { useSortUtils } from "@/features/sort";
+  import { useAppStore } from "@/shared/store";
+  import { collection, deleteDoc, doc, getDocs, orderBy, query } from "firebase/firestore";
+  import type { ITodo } from "@/entities/todo";
 
   const { searchTodos } = useFilter();
   const { sortedAndFilteredTodos } = useSortUtils(searchTodos);
+  const store = useAppStore();
+  const todoStore = useTodoStore();
+  const db = useFirestore();
+  const auth = useFirebaseAuth();
 
-  console.log();
+  const isLoading = ref<boolean>(false);
+
+  const getAllTodos = async <T extends ITodo>(user: any): Promise<T[]> => {
+    try {
+      isLoading.value = true;
+      const q = query(collection(db, `users/${user.uid}/todos`), orderBy("title"));
+      const listDocs = await getDocs(q);
+      return listDocs.docs.map((doc) => doc.data() as T);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error);
+      }
+    } finally {
+      isLoading.value = false;
+    }
+  };
+
+  onMounted(async () => {
+    const user = await getCurrentUser();
+    const data = await getAllTodos<ITodo>(user);
+    todoStore.todos = [...data];
+  });
 </script>
 
 <template>
-  <div class="empty-wrapper" v-show="sortedAndFilteredTodos?.length === 0">
+  <div v-if="isLoading" class="text-center text-3xl font-semibold">Is Loading...</div>
+  <div v-else class="empty-wrapper" v-show="sortedAndFilteredTodos?.length === 0">
     <div class="empty_todo_list">
       <img src="/detective.svg" alt="" />
       <h3>Empty...</h3>

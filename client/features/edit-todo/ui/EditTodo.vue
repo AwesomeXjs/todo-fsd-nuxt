@@ -8,6 +8,9 @@
   const { editTodo, editValue } = useEditUtils();
 
   const successHandler = () => {
+    if (!editValue.value) {
+      return;
+    }
     todoStore.closeModalShow();
     editTodo();
   };

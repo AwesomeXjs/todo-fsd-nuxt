@@ -1,6 +1,6 @@
 import { sendPasswordResetEmail } from "@firebase/auth";
 
-import { useToastConfig } from "../config/useToastConfig";
+import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useForgotPass = (ForgotPassSchema: any, changeBackShow: () => void) => {
   const { handleSubmit, isSubmitting } = useForm({

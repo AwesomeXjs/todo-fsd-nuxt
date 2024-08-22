@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { AddTodo } from "@/features/add-todo";
   import { EditTodo } from "@/features/edit-todo";
   import { AppWidgets } from "@/widgets/app-widgets";
@@ -15,15 +15,6 @@
     ogDescription() {
       return "This is home page";
     },
-  });
-
-  // example composables
-  const { sayExample } = useUtils();
-  sayExample();
-
-  onMounted(() => {
-    // example plugins
-    nuxtApp.$sayHello();
   });
 </script>
 

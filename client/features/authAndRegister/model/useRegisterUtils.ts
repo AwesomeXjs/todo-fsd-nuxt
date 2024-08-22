@@ -1,7 +1,7 @@
 import { useAppStore } from "@/shared/store";
 import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
 
-import { useToastConfig } from "../config/useToastConfig";
+import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void) => {
   const { handleSubmit, isSubmitting } = useForm({
@@ -11,11 +11,8 @@ export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void
   //get auth instance
   const auth = useFirebaseAuth();
   const store = useAppStore();
+
   const submitRegister = handleSubmit(async (value, ctx) => {
-    /**
-     *
-     *
-     */
     const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
       "Идет проверка...",
       "Регистрация прошла успешно!"

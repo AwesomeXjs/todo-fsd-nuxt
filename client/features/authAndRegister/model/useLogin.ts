@@ -1,7 +1,7 @@
 import { useAppStore } from "@/shared/store";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 
-import { useToastConfig } from "../config/useToastConfig";
+import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useLogin = (LoginSchema: any, changeBackShow: () => void) => {
   const auth = useFirebaseAuth();

@@ -1,7 +1,7 @@
 import { useAppStore } from "@/shared/store";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-import { useToastConfig } from "../config/useToastConfig";
+import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useGoogleAuth = (changeBackShow: () => void) => {
   const auth = useFirebaseAuth();
