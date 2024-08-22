@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import LoginForm from "@/features/authAndRegister/ui/LoginForm.vue";
   import { useAppStore } from "@/shared/store";
 
   import { authModalContentUtils } from "../model/authUtils";
   import { useGoogleAuth } from "../model/useGoogleAuth";
   import ForgotPass from "./ForgotPass.vue";
+  import LoginForm from "./LoginForm.vue";
   import RegisterForm from "./RegisterForm.vue";
 
   const store = useAppStore();
@@ -34,14 +34,12 @@
           <RegisterForm
             v-show="!store.isAuth && !store.isForgotPassword"
             :change-back-show="changeBackShow"
-            :is-back-show="isBackShow"
           />
           <LoginForm
             v-show="store.isAuth && !store.isForgotPassword"
             :change-back-show="changeBackShow"
-            :is-back-show="isBackShow"
           />
-          <ForgotPass v-show="store.isForgotPassword" />
+          <ForgotPass :change-back-show="changeBackShow" v-show="store.isForgotPassword" />
         </div>
 
         <UiDivider :label="t('authDivide')" />

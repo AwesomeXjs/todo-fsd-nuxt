@@ -1,14 +1,22 @@
 <script setup lang="ts">
   import { useAppStore } from "@/shared/store";
 
+  import { useValidate } from "../config/validations";
+  import { useForgotPass } from "../model/useForgotPass";
+
+  const props = defineProps<{
+    changeBackShow: () => void;
+  }>();
   const store = useAppStore();
 
   const { t } = useI18n();
+  const { ForgotPasswordSchema } = useValidate();
+  const { submit, isSubmitting } = useForgotPass(ForgotPasswordSchema, props.changeBackShow);
 </script>
 
 <template>
-  <form @submit.prevent="" class="mt-10">
-    <fieldset :disabled="false" class="grid gap-5">
+  <form @submit.prevent="submit" class="mt-10">
+    <fieldset :disabled="isSubmitting" class="grid gap-5">
       <UiVeeInput
         icon="lucide:mail"
         class="transition duration-300"

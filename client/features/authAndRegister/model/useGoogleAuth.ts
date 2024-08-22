@@ -1,9 +1,11 @@
+import { useAppStore } from "@/shared/store";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { useToastConfig } from "../config/useToastConfig";
 
 export const useGoogleAuth = (changeBackShow: () => void) => {
   const auth = useFirebaseAuth();
+  const store = useAppStore();
   const googleAuthProvider = new GoogleAuthProvider();
 
   const loginWithGoogle = async () => {
@@ -12,7 +14,8 @@ export const useGoogleAuth = (changeBackShow: () => void) => {
       "Вход прошел успешно!"
     );
     try {
-      await signInWithPopup(auth!, googleAuthProvider);
+      const { user } = await signInWithPopup(auth!, googleAuthProvider);
+      store.authUserId = user.uid;
       changeBackShow();
       toastUpdateSuccess();
       return await navigateTo("/dashboard", { replace: true });

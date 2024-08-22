@@ -10,7 +10,6 @@
 
   const props = defineProps<{
     changeBackShow: () => void;
-    isBackShow: boolean;
   }>();
 
   const { authTitle, toggleAuth } = authModalContentUtils();

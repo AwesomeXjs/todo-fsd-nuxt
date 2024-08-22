@@ -7,7 +7,6 @@
 
   const props = defineProps<{
     changeBackShow: () => void;
-    isBackShow: boolean;
   }>();
 
   const store = useAppStore();

@@ -5,7 +5,13 @@ export const useAppStore = defineStore("app", () => {
   const isForgotPassword = ref<boolean>(false);
   const language = ref<string>("EN");
   const isAuth = ref<boolean>(false);
-  const authUserId = ref<number | null>(null);
+  const authUserId = ref<string | null>(null);
+  const authModalIsShow = ref<boolean>(false);
 
-  return { language, isAuth, authUserId, appTheme, isForgotPassword };
+  watch(authUserId, () => {
+    if (!authUserId.value) {
+      navigateTo("/");
+    }
+  });
+  return { language, isAuth, authUserId, appTheme, isForgotPassword, authModalIsShow };
 });

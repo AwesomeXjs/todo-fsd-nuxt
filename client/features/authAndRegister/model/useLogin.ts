@@ -17,7 +17,8 @@ export const useLogin = (LoginSchema: any, changeBackShow: () => void) => {
       "Авторизация прошла успешно!"
     );
     try {
-      await signInWithEmailAndPassword(auth!, value.email, value.password);
+      const { user } = await signInWithEmailAndPassword(auth!, value.email, value.password);
+      store.authUserId = user.uid;
       toastUpdateSuccess();
       changeBackShow();
       return await navigateTo("/dashboard");

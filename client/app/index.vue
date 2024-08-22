@@ -5,4 +5,6 @@
   </NuxtLayout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { AuthModal } from "@/widgets/auth-modal";
+</script>

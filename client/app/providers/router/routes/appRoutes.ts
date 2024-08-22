@@ -9,4 +9,12 @@ export const appRoutes = [
     path: "/dashboard",
     component: () => import("@/pages/dashboard"),
   },
+  {
+    name: "private",
+    path: "/private",
+    component: () => import("@/pages/private-page"),
+    meta: {
+      middleware: ["auth"],
+    },
+  },
 ];

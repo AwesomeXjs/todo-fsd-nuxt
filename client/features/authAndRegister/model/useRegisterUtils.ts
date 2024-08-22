@@ -1,3 +1,4 @@
+import { useAppStore } from "@/shared/store";
 import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
 
 import { useToastConfig } from "../config/useToastConfig";
@@ -9,6 +10,7 @@ export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void
 
   //get auth instance
   const auth = useFirebaseAuth();
+  const store = useAppStore();
   const submitRegister = handleSubmit(async (value, ctx) => {
     /**
      *
@@ -20,6 +22,7 @@ export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void
     );
     try {
       const { user } = await createUserWithEmailAndPassword(auth!, value.email, value.password);
+      store.authUserId = user.uid;
       await updateProfile(user, {
         displayName: value.name,
       });

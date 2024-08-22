@@ -59,6 +59,9 @@ export const i18nHomepage = {
     forgotPassTitle: "Forgot password?",
     forgotPassText: "Enter your email and we will send you a link to reset your password",
     forgotPassBtn: "Send email",
+
+    //SIGNOUT BUTTON
+    signOutButton: "Sign out",
   },
   ru: {
     homepageTitle: "СПИСОК ЗАДАЧ",
@@ -120,5 +123,8 @@ export const i18nHomepage = {
     forgotPassTitle: "Забыли пароль?",
     forgotPassText: "Введите вашу почту и мы вышлем вам ссылку для сброса пароля",
     forgotPassBtn: "Отправить почту",
+
+    //SIGNOUT BUTTON
+    signOutButton: "Выход",
   },
 };
