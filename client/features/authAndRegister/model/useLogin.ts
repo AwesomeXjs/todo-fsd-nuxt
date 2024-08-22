@@ -21,7 +21,7 @@ export const useLogin = (LoginSchema: any, changeBackShow: () => void) => {
       store.authUserId = user.uid;
       toastUpdateSuccess();
       changeBackShow();
-      return await navigateTo("/dashboard");
+      return await navigateTo("/");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toastUpdateError(error);

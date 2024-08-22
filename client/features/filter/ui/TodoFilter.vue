@@ -3,13 +3,14 @@
   import { Search } from "@/shared/assets";
 
   const store = useTodoStore();
+  const { t } = useI18n();
 </script>
 
 <template>
   <div class="input-wrapper">
     <input
       v-model="store.inputValue"
-      :placeholder="$t('placeholderFilter')"
+      :placeholder="t('placeholderFilter')"
       class="filter"
       type="text"
       name="filterName"

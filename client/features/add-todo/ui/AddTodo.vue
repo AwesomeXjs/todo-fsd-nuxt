@@ -8,7 +8,7 @@
   const { useSelectBackgroundShow } = useUtils();
   const { changeBackShow, isBackShow } = useSelectBackgroundShow();
 
-  const cancelHandler = () => {
+  const cancelHandler = async () => {
     changeBackShow();
     inputValue.value = "";
   };

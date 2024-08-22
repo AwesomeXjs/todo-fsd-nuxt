@@ -25,7 +25,7 @@ export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void
       });
       toastUpdateSuccess();
       changeBackShow();
-      return await navigateTo("/dashboard");
+      return await navigateTo("/");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toastUpdateError(error);

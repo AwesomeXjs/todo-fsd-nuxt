@@ -18,7 +18,7 @@ export const useGoogleAuth = (changeBackShow: () => void) => {
       store.authUserId = user.uid;
       changeBackShow();
       toastUpdateSuccess();
-      return await navigateTo("/dashboard", { replace: true });
+      return await navigateTo("/", { replace: true });
     } catch (e: unknown) {
       if (e instanceof Error) {
         toastUpdateError(e);

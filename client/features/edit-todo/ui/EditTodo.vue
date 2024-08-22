@@ -1,26 +1,31 @@
 <script setup lang="ts">
   import { useTodoStore } from "@/entities/todo";
+  import { useAppStore } from "@/shared/store/useAppStore";
+  import { doc, updateDoc } from "@firebase/firestore";
 
   import { useEditUtils } from "../model/useEditUtils";
 
   const todoStore = useTodoStore();
+  const appStore = useAppStore();
+
+  const { t } = useI18n();
 
   const { editTodo, editValue } = useEditUtils();
 
-  const successHandler = () => {
+  const successHandler = async () => {
     if (!editValue.value) {
       return;
     }
+    await editTodo();
     todoStore.closeModalShow();
-    editTodo();
   };
 </script>
 
 <template>
   <MyModal @closeModal="todoStore.closeModalShow" :modal-show="todoStore.editModalShow">
     <MyForm
-      :title="$t('titleEditTodo')"
-      :placeholder="$t('placeholderEditTodo')"
+      :title="t('titleEditTodo')"
+      :placeholder="t('placeholderEditTodo')"
       v-model:input-value="editValue"
       @cancel="todoStore.closeModalShow"
       @success="successHandler"

@@ -1,26 +1,41 @@
 <script setup lang="ts">
   import { EditIcon, Trash } from "@/shared/assets";
   import { useAppStore } from "@/shared/store/useAppStore";
+  import { deleteDoc } from "@firebase/firestore";
+  import { doc } from "firebase/firestore";
   import type { ITodo } from "../model/types";
 
   import { useTodoStore } from "../model/store";
 
   const appStore = useAppStore();
   const store = useTodoStore();
+  const db = useFirestore();
+
+  const { COLLECTION_NAME } = useVariables();
 
   defineProps<{
     todo: ITodo;
   }>();
 
-  const changeCompeteHandler = (id: number) => {
+  const changeCompeteHandler = (id: string) => {
     store.checkTodo(id);
   };
 
-  const deleteHandler = (id: number) => {
+  const deleteHandler = async (id: string) => {
+    const { toastUpdateSuccess, toastUpdateError } = useToastConfig("Удаление", "Успешно");
+    await deleteDoc(doc(db, `users/${appStore.authUserId}/${COLLECTION_NAME}`, id))
+      .then(() => {
+        toastUpdateSuccess();
+      })
+      .catch((error: unknown) => {
+        if (error instanceof Error) {
+          toastUpdateError(error);
+        }
+      });
     store.deleteTodo(id);
   };
 
-  const editTodoHandler = (id: number) => {
+  const editTodoHandler = (id: string) => {
     store.selectedTodo = id;
     store.editModalShow = true;
   };
