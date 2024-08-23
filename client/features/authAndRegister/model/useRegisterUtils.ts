@@ -1,7 +1,6 @@
+import { useTodoStore } from "@/entities/todo";
 import { useAppStore } from "@/shared/store";
 import { createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
-
-import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useRegisterUtils = (RegisterSchema: any, changeBackShow: () => void) => {
   const { handleSubmit, isSubmitting } = useForm({

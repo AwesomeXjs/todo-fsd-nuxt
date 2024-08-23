@@ -1,3 +1,4 @@
+import { useTodoStore } from "@/entities/todo";
 import { useAppStore } from "@/shared/store";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 
@@ -6,6 +7,9 @@ import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 export const useLogin = (LoginSchema: any, changeBackShow: () => void) => {
   const auth = useFirebaseAuth();
   const store = useAppStore();
+  const todoStore = useTodoStore();
+  const { $apiService } = useNuxtApp();
+  const { COLLECTION_NAME } = useVariables();
 
   const { handleSubmit, isSubmitting } = useForm({
     validationSchema: toTypedSchema(LoginSchema),
@@ -21,6 +25,13 @@ export const useLogin = (LoginSchema: any, changeBackShow: () => void) => {
       store.authUserId = user.uid;
       toastUpdateSuccess();
       changeBackShow();
+      $apiService.fetchTodosByData({
+        COLLECTION_NAME,
+        userId: user.uid,
+        targetStore: todoStore,
+        orderBy_: "createdAt",
+        desc: true,
+      });
       return await navigateTo("/");
     } catch (error: unknown) {
       if (error instanceof Error) {

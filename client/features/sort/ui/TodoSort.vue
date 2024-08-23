@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { useTodoStore } from "@/entities/todo";
-  import { Chevron } from "@/shared/assets";
 
   import { useSortUtils } from "../model/useSortUtils";
 

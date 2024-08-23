@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { useValidate } from "@/features/authAndRegister/config/validations";
   import { useAppStore } from "@/shared/store";
 
+  import { useValidate } from "../config/validations";
   import { authModalContentUtils } from "../model/authUtils";
   import { useLogin } from "../model/useLogin";
 

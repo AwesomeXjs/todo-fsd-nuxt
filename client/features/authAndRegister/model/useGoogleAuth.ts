@@ -1,12 +1,14 @@
+import { useTodoStore } from "@/entities/todo";
 import { useAppStore } from "@/shared/store";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
-import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
 
 export const useGoogleAuth = (changeBackShow: () => void) => {
   const auth = useFirebaseAuth();
   const store = useAppStore();
+  const todoStore = useTodoStore();
   const googleAuthProvider = new GoogleAuthProvider();
+  const { $apiService } = useNuxtApp();
+  const { COLLECTION_NAME } = useVariables();
 
   const loginWithGoogle = async () => {
     const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
@@ -18,6 +20,13 @@ export const useGoogleAuth = (changeBackShow: () => void) => {
       store.authUserId = user.uid;
       changeBackShow();
       toastUpdateSuccess();
+      $apiService.fetchTodosByData({
+        COLLECTION_NAME,
+        userId: user.uid,
+        targetStore: todoStore,
+        orderBy_: "createdAt",
+        desc: true,
+      });
       return await navigateTo("/", { replace: true });
     } catch (e: unknown) {
       if (e instanceof Error) {

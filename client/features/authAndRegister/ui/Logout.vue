@@ -3,8 +3,6 @@
   import { useAppStore } from "@/shared/store";
   import { signOut } from "@firebase/auth";
 
-  import { useToastConfig } from "../../../shared/lib/composables/useToastConfig";
-
   const store = useAppStore();
   const todoStore = useTodoStore();
   const auth = useFirebaseAuth();

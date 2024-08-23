@@ -1,4 +1,4 @@
-import ApiService from "../../api/apiService";
+import { ApiService } from "@/shared/api";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const db = useFirestore();

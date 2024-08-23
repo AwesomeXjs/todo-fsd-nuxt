@@ -59,6 +59,9 @@
     <NuxtLink to="/">
       {{ t("homepageTitle") }}
     </NuxtLink>
+    <NuxtLink to="/web-sockets-practice">
+      <UiButton variant="secondary">К веб сокетам!</UiButton>
+    </NuxtLink>
     <div class="header-right">
       <MySelectionInput :title="store.language" :items="items" />
       <UiButton @click="fetchTodos" variant="secondary">

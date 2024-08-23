@@ -17,4 +17,12 @@ export const appRoutes = [
       middleware: ["auth"],
     },
   },
+  {
+    name: "web-sockets-practice",
+    path: "/web-sockets-practice",
+    component: () => import("@/pages/web-sockets-practice"),
+    meta: {
+      middleware: ["auth"],
+    },
+  },
 ];
