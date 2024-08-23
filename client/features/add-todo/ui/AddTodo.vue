@@ -1,7 +1,10 @@
 <script setup lang="ts">
+  import { useAppStore } from "@/shared/store";
+
   import { useAddTodo } from "../model/useAddTodo";
 
   const { t } = useI18n();
+  const store = useAppStore();
 
   const { inputValue, addTodo } = useAddTodo();
 
@@ -30,7 +33,7 @@
       v-model:input-value="inputValue"
     />
   </MyModal>
-  <button @click="changeBackShow" class="add-todo-btn">+</button>
+  <button v-show="store.authUserId" @click="changeBackShow" class="add-todo-btn">+</button>
 </template>
 
 <style scoped lang="scss">
