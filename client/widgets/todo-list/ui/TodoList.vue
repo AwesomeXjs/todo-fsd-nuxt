@@ -3,16 +3,28 @@
   import { useFilter } from "@/features/filter";
   import { useSortUtils } from "@/features/sort";
 
-  import { useGetTodos } from "../model/useGetTodos";
-
   const { searchTodos } = useFilter();
   const { sortedAndFilteredTodos } = useSortUtils(searchTodos);
+  const { COLLECTION_NAME } = useVariables();
+  const { $apiService } = useNuxtApp();
+  const todoStore = useTodoStore();
 
-  const { isLoading } = useGetTodos();
+  onMounted(async () => {
+    const user = await getCurrentUser();
+    if (user) {
+      $apiService.fetchTodosByData({
+        COLLECTION_NAME: COLLECTION_NAME,
+        userId: user?.uid,
+        targetStore: todoStore,
+        orderBy_: "title",
+        desc: true,
+      });
+    }
+  });
 </script>
 
 <template>
-  <div v-if="isLoading" class="text-center text-3xl font-semibold">Is Loading...</div>
+  <div v-if="false" class="text-center text-3xl font-semibold">Is Loading...</div>
   <div v-else>
     <div class="empty-wrapper" v-show="sortedAndFilteredTodos?.length === 0">
       <div class="empty_todo_list">

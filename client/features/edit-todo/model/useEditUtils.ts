@@ -1,32 +1,22 @@
 import { useTodoStore } from "@/entities/todo";
-import { useAppStore } from "@/shared/store/useAppStore";
-import { doc, updateDoc } from "@firebase/firestore";
 
 export const useEditUtils = () => {
   const todoStore = useTodoStore();
-  const store = useAppStore();
   const editValue = ref<string>("");
   const { COLLECTION_NAME } = useVariables();
-  const db = useFirestore();
+  const { $apiService } = useNuxtApp();
 
   const editTodo = async () => {
-    const currentTodo = todoStore.todos.find((todo) => todo.id === todoStore.selectedTodo);
-    const { toastUpdateSuccess, toastUpdateError } = useToastConfig("Редактирование", "Успешно");
-    const docRef = doc(db, `users/${store.authUserId}/${COLLECTION_NAME}`, todoStore.selectedTodo!);
-    if (currentTodo) {
-      await updateDoc(docRef, {
-        title: editValue.value,
-      })
-        .then(() => {
-          toastUpdateSuccess();
-          currentTodo.title = editValue.value;
-        })
-        .catch((e) => {
-          if (e instanceof Error) {
-            toastUpdateError(e);
-          }
-        });
+    const user = await getCurrentUser();
+    if (user.uid) {
+      $apiService.updateItemInDb({
+        COLLECTION_NAME,
+        userId: user.uid,
+        editValue: editValue.value,
+        itemStore: todoStore,
+      });
     }
+
     todoStore.selectedTodo = null;
     editValue.value = "";
   };

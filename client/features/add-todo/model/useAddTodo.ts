@@ -1,12 +1,11 @@
 import { useTodoStore } from "@/entities/todo";
-import { doc, setDoc } from "firebase/firestore";
-import { useFirestore } from "vuefire";
 import type { ITodo } from "@/entities/todo";
 
 export const useAddTodo = () => {
   const todoStore = useTodoStore();
-  const db = useFirestore();
+
   const { COLLECTION_NAME } = useVariables();
+  const { $apiService } = useNuxtApp();
 
   const { generateUUID } = useUniqueId();
   const inputValue = ref<string>("");
@@ -24,27 +23,15 @@ export const useAddTodo = () => {
     };
 
     const user = await getCurrentUser();
-    const { toastUpdateSuccess, toastUpdateError } = useToastConfig(
-      "Идет добавление...",
-      "Задача добавлена!"
-    );
-    try {
-      if (user) {
-        await setDoc(doc(db, `users/${user.uid}/${COLLECTION_NAME}`, payload.id), payload).then(
-          () => {
-            toastUpdateSuccess();
-            todoStore.todos = [...todoStore.todos, payload];
-            inputValue.value = "";
-          }
-        );
-      }
-    } catch (e) {
-      if (e instanceof Error) {
-        toastUpdateError(e);
-      }
+    if (user.uid) {
+      $apiService.addItemToDb({
+        COLLECTION_NAME,
+        userId: user.uid,
+        inputValue: inputValue,
+        targetStore: todoStore,
+        payload,
+      });
     }
-
-    // }
   };
   return { addTodo, inputValue };
 };

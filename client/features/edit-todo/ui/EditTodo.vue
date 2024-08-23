@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import { useTodoStore } from "@/entities/todo";
   import { useAppStore } from "@/shared/store/useAppStore";
-  import { doc, updateDoc } from "@firebase/firestore";
 
   import { useEditUtils } from "../model/useEditUtils";
 

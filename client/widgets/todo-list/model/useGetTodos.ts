@@ -17,6 +17,10 @@ export const useGetTodos = () => {
       return listDocs.docs.map((doc) => doc.data() as T);
     } catch (error: unknown) {
       if (error instanceof Error) {
+        if (!user) {
+          $toast.error("Авторизуйтесь!");
+          return;
+        }
         $toast.error(error.message);
       }
     } finally {

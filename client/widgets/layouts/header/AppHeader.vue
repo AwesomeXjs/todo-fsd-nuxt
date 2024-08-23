@@ -1,10 +1,14 @@
 <script setup lang="ts">
+  import { useTodoStore } from "@/entities/todo";
   import { Logout } from "@/features/authAndRegister";
   import { useAppStore } from "@/shared/store";
 
+  const todoStore = useTodoStore();
   const store = useAppStore();
   const { locale, setLocale, t } = useI18n();
   const router = useRouter();
+  const { COLLECTION_NAME } = useVariables();
+  const { $apiService } = useNuxtApp();
 
   const signUpText = computed(() => {
     if (store.isAuth) {
@@ -35,6 +39,19 @@
     store.isForgotPassword = false;
     store.authModalIsShow = !store.authModalIsShow;
   };
+
+  const fetchTodos = async () => {
+    const user = await getCurrentUser();
+    if (user) {
+      await $apiService.fetchTodosByData({
+        COLLECTION_NAME,
+        userId: user?.uid,
+        targetStore: todoStore,
+        orderBy_: "createdAt",
+        desc: true,
+      });
+    }
+  };
 </script>
 
 <template>
@@ -44,6 +61,10 @@
     </NuxtLink>
     <div class="header-right">
       <MySelectionInput :title="store.language" :items="items" />
+      <UiButton @click="fetchTodos" variant="secondary">
+        <Icon name="lucide:log-out" />
+        Загрузить данные по дате
+      </UiButton>
       <UiButton @click="router.push('/private')" variant="secondary">
         <Icon name="lucide:log-out" />
         Приватная страница
