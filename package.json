@@ -20,6 +20,7 @@
     "firebase-admin": "^12.3.1",
     "firebase-functions": "^5.1.0",
     "nuxt": "^3.12.4",
+    "nuxt-echarts": "^0.2.2",
     "nuxt-vuefire": "^1.0.4",
     "radix-vue": "^1.9.4",
     "sass": "^1.77.8",

@@ -80,6 +80,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@vee-validate/nuxt",
     "@morev/vue-transitions/nuxt",
+    "nuxt-echarts",
   ],
 
   i18n: {
@@ -99,5 +100,19 @@ export default defineNuxtConfig({
       messagingSenderId: process.env.messagingSenderId,
       appId: process.env.appId,
     },
+  },
+  echarts: {
+    charts: ["BarChart", "PieChart", "LineChart", "CandlestickChart"],
+    components: [
+      "TitleComponent",
+      "TooltipComponent",
+      "GridComponent",
+      "LegendComponent",
+      "DataZoomComponent",
+      "MarkLineComponent",
+      "MarkPointComponent",
+    ],
+    ssr: true,
+    renderer: "svg",
   },
 });
